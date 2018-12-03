@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja osoby</title>
+</head>
+<body>
+    <h1>Edytujesz {{ person.name }} {{ person.surname }}</h1>
+    <form method="post">
+        <label>Imię:
+            <input type="text" name="name" value="{{ person.name }}">
+        </label><br>
+        <label>Nazwisko:
+            <input type="text" name="surname" value="{{ person.surname }}">
+        </label><br>
+         <label>Opis:
+            <input type="text" name="description" value="{{ person.description }}">
+        </label><br>
+        <label>Adres: ul. {{ person.address.street }} {{ person.address.house_number }}/{{ person.address.apartment_number }} {{ person.address.city }}
+            <button type="submit"><a href="/{{ person.id }}/addAddress">Zmień adres</a></button>
+            <button type="submit"><a href="/{{ person.id }}/deleteAddress">Usuń adres</a></button>
+        </label><br>
+        <label>Telefon:
+            <ul>
+                {% for telephon in telephons %}
+                <li>{{ telephon.number }} ----> {{ telephon.get_type_number_display }}</li>
+                {% endfor %}
+            </ul>
+            <button type="submit"><a href="/{{ person.id }}/addTelephon">Dodaj telefon</a></button>
+            <button type="submit"><a href="/{{ person.id }}/deleteTelephon">Usuń telefon</a></button>
+        </label><br>
+        <label>E-mail:
+            <ul>
+                {% for mail in mails %}
+                <li>{{ mail.mail }} ----> {{ mail.get_mail_type_display }}</li>
+                {% endfor %}
+            </ul>
+            <button type="submit"><a href="/{{ person.id }}/addMail">Dodaj e-mail</a></button>
+            <button type="submit"><a href="/{{ person.id }}/deleteMail">Usuń e-mail</a></button>
+        </label><br>
+        <label>Osoba należy do następujących grup:
+            <ul>{% for group in groups %}
+                <li>{{ group.name }}</li>
+                {% endfor %}
+            </ul>
+            <button type="submit"><a href="../groups">Przejdź do działu "GRUPY"</a></button>
+        </label><br>
+        <button type="submit">Zatwierdź zmiany</button>
+        {% csrf_token %}
+    </form>
+</body>
+</html>

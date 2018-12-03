@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post">
+         <label>Zaznacz adres e-mail, który chcesz usunąć:
+              <ul>
+                {% for mail in mails %}
+                <input type="radio" name="mail" value="{{ mail.id }}">{{ mail.mail }} ----> {{ mail.get_mail_type_display }}<br>
+                {% endfor %}
+            </ul>
+             <button type="submit" name="decision" value="yes">usuń</button>
+             <button type="submit" name="decision" value="no">anuluj</button>
+         </label>
+    {% csrf_token %}
+    </form>
+</body>
+</html>

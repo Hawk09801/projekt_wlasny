@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dane osoby</title>
+</head>
+<body>
+    <h1>{{ person.name }} {{ person.surname }}</h1>
+    <form method="post">
+        <label>Opis: {{ person.description }}</label><br>
+        <label>Adres: ul. {{ person.address.street }} {{ person.address.house_number }}/{{ person.address.apartment_number }} {{ person.address.city }}</label><br>
+        <label>Numer telefonu:
+            <ul>
+                {% for telephon in telephons %}
+                <li>{{ telephon.number }} ----> {{ telephon.get_type_number_display }}</li>
+                {% endfor %}
+            </ul>
+        </label><br>
+        <label>Adres e-mail:
+            <ul>
+                {% for mail in mails %}
+                <li>{{ mail.mail }} ----> {{ mail.get_mail_type_display }}</li>
+                {% endfor %}
+            </ul>
+        </label><br>
+        <label>Osoba należy do następujących grup:</label>
+            <ul>{% for group in groups %}
+                <li>{{ group.name }}</li>
+                {% endfor %}
+            </ul>
+        <button type="submit">Zmień dane</button>
+        {% csrf_token %}
+    </form>
+</body>
+</html>

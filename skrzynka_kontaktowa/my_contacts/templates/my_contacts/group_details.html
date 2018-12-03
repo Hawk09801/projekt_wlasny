@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły grupy</title>
+</head>
+<body>
+    <h1>Grupa: {{ group.name }}</h1>
+    <form method="post">
+        <button type="submit"><a href="/group/{{ group.id }}/group-search">Wyszukaj osobę</a></button><br>
+        <label>Członkowie:
+            <ol>
+                {% for person in persons %}
+                <li>{{ person.name }} {{ person.surname }}</li>
+                {% endfor %}
+            </ol>
+        </label>
+        <button type="submit">Dodaj nowych członków grupy</button>
+        {% csrf_token %}
+    </form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Usunięcie osoby</title>
+</head>
+<body>
+    <p>Czy na pewno chcesz usunąć {{ person.name }} {{ person.surname }}?</p>
+    <form method="post">
+    <button type="submit" name="decision" value="yes">Tak</button>
+    <button type="submit" name="decision" value="no">Nie</button>
+    {% csrf_token %}
+    </form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj adres</title>
+</head>
+<body>
+    <h1>Dodaj nowy adres do osoby {{ person.name }} {{ person.surname }}</h1>
+    <form method="post">
+        <label>Podaj miasto:
+            <input type="text" name="city" value="{{ person.address.city }}">
+        </label><br>
+        <label>Podaj ulicę:
+            <input type="text" name="street" value="{{ person.address.street }}">
+        </label><br>
+        <label>Podaj numer budynku:
+            <input type="text" name="house_number" value="{{ person.address.house_number }}">
+        </label><br>
+        <label>Podaj numer mieszkania:
+            <input type="text" name="apartment_number" value="{{ person.address.apartment_number }}">
+        </label><br>
+        <button type="submit">Dodaj</button>
+        {% csrf_token %}
+    </form>
+</body>
+</html>

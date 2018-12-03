@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <p>Czy na pewno chcesz usunąć ten adres?</p>
+     <form method="post">
+     <p>ul. {{ address.street }} {{ address.house_number }}/{{ address.apartment_number }} {{ address.city }}</p>
+    <button type="submit" name="decision" value="yes">Tak</button>
+    <button type="submit" name="decision" value="no">Nie</button>
+    {% csrf_token %}
+    </form>
+</body>
+</html>

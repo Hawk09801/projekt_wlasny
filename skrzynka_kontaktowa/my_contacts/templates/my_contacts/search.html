@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Szukaj</title>
+</head>
+<body>
+    <h1>Grupa: {{ group.name }}</h1>
+    <form method="post">
+        <label>Wpisz imię lub nazwisko osoby, którą chcesz wyszukać:<br>
+            <input type="text" name="search" placeholder="szukaj...">
+        </label><br>
+        <button type="submit">Wyszukaj</button>
+        {% csrf_token %}
+    </form>
+    <ul>
+    {% for person in result %}
+        <li>{{ person.name }} {{ person.surname }}</li>
+    {% endfor %}
+    </ul>
+    <div>
+        <button type="submit"><a href="/group/{{ group.id }}">Powrót</a></button>
+    </div>
+</body>
+</html>

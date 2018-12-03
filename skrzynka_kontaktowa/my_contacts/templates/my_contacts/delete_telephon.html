@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <form method="post">
+         <label>Zaznacz numer telefonu, który chcesz usunąć:
+              <ul>
+                {% for telephon in telephons %}
+                <input type="radio" name="number" value="{{ telephon.id }}">{{ telephon.number }} ---> {{ telephon.get_type_number_display }}<br>
+                {% endfor %}
+            </ul>
+             <button type="submit" name="decision" value="yes">usuń</button>
+             <button type="submit" name="decision" value="no">anuluj</button>
+         </label>
+    {% csrf_token %}
+    </form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wszystkie osoby</title>
+</head>
+<body>
+    <h1>Kontakty:</h1>
+    <button type="submit"><a href="new">Dodaj nową osobę osobę</a></button>
+    <ol>
+        {% for person in persons %}
+        <li>{{ person.surname }} <a href="show/{{ person.id }}"> {{ person.name }} </a> ----> {{ person.description }}
+        <button type="submit"><a href="modify/{{ person.id }}">Edytuj osobę</a></button>
+            <button type="submit"><a href="delete/{{ person.id }}">Usuń osobę</a></button>
+        </li>
+        {% endfor %}
+    </ol>
+</body>
+</html>

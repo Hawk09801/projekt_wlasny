@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodawanie osób do grup</title>
+</head>
+<body>
+    <h1>Grupa: {{ group.name }}</h1>
+    <form method="post">
+        <label>Członkowie:
+            <ol>
+                {% for person in persons %}
+                <li>{{ person.name }} {{ person.surname }}</li>
+                {% endfor %}
+            </ol>
+        </label><br>
+        <label>Wybierz z listy osobę, którą chcesz dodać:
+            <select name="member">
+                {% for person in all_person %}
+                <option value="{{ person.id }}">{{ person.name }} {{ person.surname }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <button type="submit">Dodaj osobę do grupy</button>
+        {% csrf_token %}
+    </form>
+</body>
+</html>
